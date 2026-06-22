@@ -77,20 +77,20 @@ font-size:4.5rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+animation:fadeUp 1s ease forwards;
 opacity:0;
 transform:translateY(20px);
-animation:fadeInUp 1s ease forwards;
 }
 
 .hero p{
 max-width:650px;
 margin:14px auto;
 color:#cbd5e1;
+font-size:0.95rem;
+animation:fadeUp 1s ease forwards;
+animation-delay:0.2s;
 opacity:0;
 transform:translateY(20px);
-animation:fadeInUp 1s ease forwards;
-animation-delay:0.2s;
-font-size:0.95rem;
 }
 
 .btn{
@@ -103,20 +103,19 @@ text-decoration:none;
 color:white;
 font-weight:600;
 transition:.3s;
-opacity:0;
-animation:fadeInUp 1s ease forwards;
+animation:fadeUp 1s ease forwards;
 animation-delay:0.4s;
-font-size:0.95rem;
+opacity:0;
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.03);
+transform:translateY(-4px) scale(1.03);
 box-shadow:0 10px 25px rgba(139,92,246,0.35);
 }
 
 /* SECTIONS */
 section{
-padding:60px 10%;
+padding:70px 10%;
 scroll-margin-top:80px;
 }
 
@@ -139,8 +138,11 @@ backdrop-filter:blur(15px);
 padding:18px;
 border-radius:16px;
 transition:0.3s;
-opacity:0;
-transform:translateY(20px);
+cursor:pointer;
+
+/* IMPORTANT FIX */
+opacity:1;
+transform:none;
 }
 
 .card:hover{
@@ -165,8 +167,8 @@ transition:0.3s;
 }
 
 .skill:hover{
-transform:scale(1.12);
-background:rgba(255,255,255,.18);
+transform:scale(1.1);
+background:rgba(255,255,255,.15);
 }
 
 /* FOOTER */
@@ -178,11 +180,23 @@ font-size:0.9rem;
 }
 
 /* ANIMATION */
-@keyframes fadeInUp{
+@keyframes fadeUp{
 to{
 opacity:1;
 transform:translateY(0);
 }
+}
+
+/* SCROLL ANIMATION */
+.reveal{
+opacity:0;
+transform:translateY(20px);
+transition:0.6s ease;
+}
+
+.reveal.show{
+opacity:1;
+transform:translateY(0);
 }
 </style>
 </head>
@@ -196,33 +210,21 @@ transform:translateY(0);
 <section class="hero">
 <div>
 <h1>Roblox Scripter</h1>
-
-<p>
-Clean and optimized Roblox systems using Luau.
-Combat systems, UI design and gameplay mechanics.
-</p>
-
-<a href="#projects" class="btn" onclick="smoothScroll(event,'projects')">
-View Projects
-</a>
+<p>Clean Luau systems, combat mechanics, UI design and gameplay development.</p>
+<a href="#projects" class="btn">View Projects</a>
 </div>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="title">About Me</h2>
-
 <div class="card">
-<p>
 Roblox scripter with ~1 year of experience in Roblox Studio.<br><br>
-• Combat systems (PvP mechanics, combos, hit detection)<br>
-• UI design (modern Roblox interfaces)<br>
-• Gameplay systems (core mechanics, progression)<br><br>
-Clean, optimized and scalable Luau development.
-</p>
+Combat systems • UI design • Gameplay systems<br><br>
+Focused on clean, optimized Luau code for scalable games.
 </div>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="title">Skills</h2>
 
 <div class="skills">
@@ -232,46 +234,40 @@ Clean, optimized and scalable Luau development.
 <div class="skill">UI Design</div>
 <div class="skill">Gameplay Systems</div>
 <div class="skill">DataStore</div>
-<div class="skill">Remote Events</div>
-<div class="skill">Optimization</div>
 </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="reveal">
 <h2 class="title">Projects</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>⚔️ Combat System</h3>
-<p>PvP system with combos, animations and hit detection.</p>
+⚔️ Combat System
 </div>
 
 <div class="card">
-<h3>🎮 UI System</h3>
-<p>Modern Roblox UI with animations and responsive design.</p>
+🎮 UI System
 </div>
 
 <div class="card">
-<h3>🧠 Gameplay Systems</h3>
-<p>Core mechanics and progression systems.</p>
+🧠 Gameplay Systems
 </div>
 
 <div class="card">
-<h3>⚙️ Framework</h3>
-<p>Reusable scalable system architecture for Roblox games.</p>
+⚙️ Framework
 </div>
 
 </div>
 </section>
 
-<section>
+<section class="reveal">
 <h2 class="title">Contact</h2>
 
 <div class="card">
-<p><strong>Discord:</strong> yourdiscord</p>
-<p><strong>Roblox:</strong> Suuwi2k</p>
-<p><strong>GitHub:</strong> Suuwi2k</p>
+Discord: yourdiscord<br>
+Roblox: Suuwi2k<br>
+GitHub: Suuwi2k
 </div>
 </section>
 
@@ -280,23 +276,18 @@ Clean, optimized and scalable Luau development.
 </footer>
 
 <script>
-function smoothScroll(e,id){
-e.preventDefault();
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
+// smooth reveal scroll
+const elements=document.querySelectorAll('.reveal');
 
-const cards=document.querySelectorAll('.card');
-
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){
-e.target.style.opacity=1;
-e.target.style.transform="translateY(0)";
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
 }
 });
-},{threshold:0.1});
+},{threshold:0.15});
 
-cards.forEach(c=>obs.observe(c));
+elements.forEach(el=>observer.observe(el));
 </script>
 
 </body>
