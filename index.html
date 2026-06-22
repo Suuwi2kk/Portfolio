@@ -77,20 +77,20 @@ font-size:4.5rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:fadeInUp 1s ease forwards;
 opacity:0;
 transform:translateY(20px);
+animation:fadeInUp 1s ease forwards;
 }
 
 .hero p{
 max-width:650px;
 margin:14px auto;
 color:#cbd5e1;
-font-size:0.95rem;
-animation:fadeInUp 1s ease forwards;
-animation-delay:0.2s;
 opacity:0;
 transform:translateY(20px);
+animation:fadeInUp 1s ease forwards;
+animation-delay:0.2s;
+font-size:0.95rem;
 }
 
 .btn{
@@ -103,13 +103,15 @@ text-decoration:none;
 color:white;
 font-weight:600;
 transition:.3s;
+opacity:0;
 animation:fadeInUp 1s ease forwards;
 animation-delay:0.4s;
-opacity:0;
+font-size:0.95rem;
 }
 
 .btn:hover{
 transform:translateY(-5px) scale(1.03);
+box-shadow:0 10px 25px rgba(139,92,246,0.35);
 }
 
 /* SECTIONS */
@@ -137,7 +139,6 @@ backdrop-filter:blur(15px);
 padding:18px;
 border-radius:16px;
 transition:0.3s;
-cursor:pointer;
 opacity:0;
 transform:translateY(20px);
 }
@@ -164,7 +165,8 @@ transition:0.3s;
 }
 
 .skill:hover{
-transform:scale(1.1);
+transform:scale(1.12);
+background:rgba(255,255,255,.18);
 }
 
 /* FOOTER */
@@ -173,60 +175,6 @@ padding:30px;
 text-align:center;
 color:#94a3b8;
 font-size:0.9rem;
-}
-
-/* MODAL */
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(12px);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-.modal-box{
-background:rgba(17,24,39,0.95);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:16px;
-padding:20px;
-width:90%;
-max-width:700px;
-animation:popIn 0.25s ease;
-}
-
-@keyframes popIn{
-from{transform:scale(0.8);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
-
-.close{
-float:right;
-font-size:26px;
-cursor:pointer;
-}
-
-.video-box iframe{
-width:100%;
-height:300px;
-margin-top:10px;
-border-radius:12px;
-}
-
-.gallery{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-top:10px;
-}
-
-.gallery img{
-width:120px;
-height:80px;
-object-fit:cover;
-border-radius:10px;
 }
 
 /* ANIMATION */
@@ -248,22 +196,35 @@ transform:translateY(0);
 <section class="hero">
 <div>
 <h1>Roblox Scripter</h1>
-<p>Clean Luau systems, combat mechanics, UI design and gameplay development.</p>
-<a href="#projects" class="btn" onclick="smoothScroll(event,'projects')">View Projects</a>
+
+<p>
+Clean and optimized Roblox systems using Luau.
+Combat systems, UI design and gameplay mechanics.
+</p>
+
+<a href="#projects" class="btn" onclick="smoothScroll(event,'projects')">
+View Projects
+</a>
 </div>
 </section>
 
 <section>
 <h2 class="title">About Me</h2>
+
 <div class="card">
+<p>
 Roblox scripter with ~1 year of experience in Roblox Studio.<br><br>
-Combat systems • UI design • Gameplay systems<br><br>
-Focused on clean, optimized Luau code for scalable games.
+• Combat systems (PvP mechanics, combos, hit detection)<br>
+• UI design (modern Roblox interfaces)<br>
+• Gameplay systems (core mechanics, progression)<br><br>
+Clean, optimized and scalable Luau development.
+</p>
 </div>
 </section>
 
 <section>
 <h2 class="title">Skills</h2>
+
 <div class="skills">
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
@@ -271,6 +232,8 @@ Focused on clean, optimized Luau code for scalable games.
 <div class="skill">UI Design</div>
 <div class="skill">Gameplay Systems</div>
 <div class="skill">DataStore</div>
+<div class="skill">Remote Events</div>
+<div class="skill">Optimization</div>
 </div>
 </section>
 
@@ -279,20 +242,24 @@ Focused on clean, optimized Luau code for scalable games.
 
 <div class="grid">
 
-<div class="card" onclick="openProject('combat')">
-⚔️ Combat System
+<div class="card">
+<h3>⚔️ Combat System</h3>
+<p>PvP system with combos, animations and hit detection.</p>
 </div>
 
-<div class="card" onclick="openProject('ui')">
-🎮 UI System
+<div class="card">
+<h3>🎮 UI System</h3>
+<p>Modern Roblox UI with animations and responsive design.</p>
 </div>
 
-<div class="card" onclick="openProject('gameplay')">
-🧠 Gameplay Systems
+<div class="card">
+<h3>🧠 Gameplay Systems</h3>
+<p>Core mechanics and progression systems.</p>
 </div>
 
-<div class="card" onclick="openProject('framework')">
-⚙️ Framework
+<div class="card">
+<h3>⚙️ Framework</h3>
+<p>Reusable scalable system architecture for Roblox games.</p>
 </div>
 
 </div>
@@ -300,10 +267,11 @@ Focused on clean, optimized Luau code for scalable games.
 
 <section>
 <h2 class="title">Contact</h2>
+
 <div class="card">
-Discord: yourdiscord<br>
-Roblox: Suuwi2k<br>
-GitHub: Suuwi2k
+<p><strong>Discord:</strong> yourdiscord</p>
+<p><strong>Roblox:</strong> Suuwi2k</p>
+<p><strong>GitHub:</strong> Suuwi2k</p>
 </div>
 </section>
 
@@ -311,75 +279,24 @@ GitHub: Suuwi2k
 © 2025 Suuwi2k • Roblox Scripter
 </footer>
 
-<!-- MODAL -->
-<div id="modal" class="modal" onclick="outside(event)">
-<div class="modal-box">
-<span class="close" onclick="closeModal()">×</span>
-
-<h2 id="m-title"></h2>
-<p id="m-text"></p>
-
-<div class="video-box" id="m-video"></div>
-<div class="gallery" id="m-gallery"></div>
-
-</div>
-</div>
-
 <script>
-const data={
-combat:{
-title:"Combat System",
-text:"Advanced PvP system with combos and hit detection.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ",
-gallery:["https://placehold.co/300x180"]
-},
-ui:{
-title:"UI System",
-text:"Modern Roblox UI system.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ",
-gallery:[]
-},
-gameplay:{
-title:"Gameplay Systems",
-text:"Core mechanics and progression.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ",
-gallery:[]
-},
-framework:{
-title:"Framework",
-text:"Scalable game architecture.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ",
-gallery:[]
-}
-};
-
-function openProject(id){
-const p=data[id];
-
-document.getElementById("m-title").innerText=p.title;
-document.getElementById("m-text").innerText=p.text;
-
-document.getElementById("m-video").innerHTML=
-`<iframe src="${p.video}" frameborder="0" allowfullscreen></iframe>`;
-
-document.getElementById("m-gallery").innerHTML=
-p.gallery.map(i=>`<img src="${i}">`).join("");
-
-document.getElementById("modal").style.display="flex";
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-function outside(e){
-if(e.target.id==="modal") closeModal();
-}
-
 function smoothScroll(e,id){
 e.preventDefault();
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
+
+const cards=document.querySelectorAll('.card');
+
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.style.opacity=1;
+e.target.style.transform="translateY(0)";
+}
+});
+},{threshold:0.1});
+
+cards.forEach(c=>obs.observe(c));
 </script>
 
 </body>
