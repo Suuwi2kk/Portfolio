@@ -48,7 +48,9 @@ border-bottom:1px solid rgba(255,255,255,.1);
 z-index:100;
 }
 
-.logo{font-weight:700;font-size:1.2rem;}
+.logo{
+font-weight:700;
+}
 
 /* hero */
 .hero{
@@ -60,7 +62,7 @@ text-align:center;
 }
 
 .hero h1{
-font-size:4.5rem;
+font-size:4rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -70,51 +72,28 @@ transform:translateY(20px);
 }
 
 .hero p{
-max-width:650px;
-margin:15px auto;
+margin-top:10px;
 color:#cbd5e1;
 animation:fadeUp 1s ease forwards .2s;
 opacity:0;
 transform:translateY(20px);
 }
 
-.btn{
-display:inline-block;
-margin-top:10px;
-padding:12px 26px;
-border-radius:14px;
-background:linear-gradient(90deg,#8b5cf6,#06b6d4);
-color:white;
-text-decoration:none;
-font-weight:600;
-animation:fadeUp 1s ease forwards .4s;
-opacity:0;
-transition:.3s;
-}
-.btn:hover{transform:scale(1.05);}
-
 /* sections */
 section{
 padding:70px 10%;
-scroll-margin-top:80px;
-}
-
-.title{
-font-size:2rem;
-margin-bottom:20px;
 }
 
 /* cards */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:18px;
 }
 
 .card{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.1);
-backdrop-filter:blur(15px);
 padding:18px;
 border-radius:16px;
 cursor:pointer;
@@ -134,17 +113,10 @@ gap:10px;
 }
 
 .skill{
-padding:9px 14px;
+padding:8px 12px;
 background:rgba(255,255,255,.08);
 border-radius:10px;
 font-size:.85rem;
-}
-
-/* footer */
-footer{
-padding:30px;
-text-align:center;
-color:#94a3b8;
 }
 
 /* modal */
@@ -170,15 +142,15 @@ animation:pop .25s ease;
 
 .close{
 float:right;
-cursor:pointer;
 font-size:26px;
+cursor:pointer;
 }
 
 iframe{
 width:100%;
 height:300px;
-border-radius:12px;
 margin-top:10px;
+border-radius:12px;
 }
 
 /* animations */
@@ -203,32 +175,28 @@ to{opacity:1;transform:scale(1);}
 <div>
 <h1>Roblox Scripter</h1>
 <p>Combat systems, UI design & gameplay systems in Luau.</p>
-<a href="#projects" class="btn">View Projects</a>
 </div>
 </section>
 
 <section>
-<h2 class="title">About Me</h2>
+<h2>About Me</h2>
 <div class="card">
-Roblox scripter with ~1 year experience.<br><br>
-Combat systems • UI design • Gameplay systems<br><br>
-Clean and optimized Luau development.
+Roblox scripter with ~1 year experience in Roblox Studio.
 </div>
 </section>
 
 <section>
-<h2 class="title">Skills</h2>
+<h2>Skills</h2>
 <div class="skills">
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
 <div class="skill">Combat</div>
-<div class="skill">UI Design</div>
-<div class="skill">Gameplay Systems</div>
+<div class="skill">UI</div>
 </div>
 </section>
 
-<section id="projects">
-<h2 class="title">Projects</h2>
+<section>
+<h2>Projects</h2>
 
 <div class="grid">
 
@@ -241,15 +209,14 @@ Clean and optimized Luau development.
 </section>
 
 <section>
-<h2 class="title">Contact</h2>
+<h2>Contact</h2>
 <div class="card">
 Discord: yourdiscord<br>
-Roblox: Suuwi2k<br>
 GitHub: Suuwi2k
 </div>
 </section>
 
-<footer>
+<footer style="text-align:center;padding:30px;color:#94a3b8;">
 © 2025 Suuwi2k
 </footer>
 
@@ -268,7 +235,7 @@ GitHub: Suuwi2k
 </div>
 
 <script>
-const data={
+const data = {
 combat:{
 title:"Combat System",
 text:"PvP system with combos and hit detection.",
@@ -292,20 +259,24 @@ video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
 };
 
 function openProject(id){
-const p=data[id];
-document.getElementById("title").innerText=p.title;
-document.getElementById("text").innerText=p.text;
-document.getElementById("video").src=p.video;
-document.getElementById("modal").style.display="flex";
+const p = data[id];
+
+document.getElementById("title").innerText = p.title;
+document.getElementById("text").innerText = p.text;
+document.getElementById("video").src = p.video;
+
+document.getElementById("modal").style.display = "flex";
 }
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
-document.getElementById("video").src="";
+document.getElementById("modal").style.display = "none";
+document.getElementById("video").src = "";
 }
 
 function outside(e){
-if(e.target.id==="modal") closeModal();
+if(e.target.id === "modal"){
+closeModal();
+}
 }
 </script>
 
