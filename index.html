@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suuwi2kk | Roblox Developer</title>
+<title>Suuwi2k | Roblox Scripter</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -23,6 +22,7 @@ color:white;
 overflow-x:hidden;
 }
 
+/* BACKGROUND GLOW */
 body::before{
 content:'';
 position:fixed;
@@ -49,6 +49,7 @@ opacity:.4;
 z-index:-1;
 }
 
+/* NAV */
 nav{
 position:fixed;
 width:100%;
@@ -66,6 +67,7 @@ font-size:1.3rem;
 font-weight:700;
 }
 
+/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -80,6 +82,7 @@ font-size:5rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+animation: fadeUp 1s ease forwards;
 }
 
 .hero p{
@@ -87,6 +90,7 @@ max-width:700px;
 margin:20px auto;
 font-size:1.1rem;
 color:#cbd5e1;
+animation: fadeUp 1.2s ease forwards;
 }
 
 .btn{
@@ -98,12 +102,14 @@ text-decoration:none;
 color:white;
 font-weight:600;
 transition:.3s;
+animation: fadeUp 1.4s ease forwards;
 }
 
 .btn:hover{
 transform:translateY(-4px);
 }
 
+/* SECTIONS */
 section{
 padding:100px 10%;
 }
@@ -113,6 +119,7 @@ font-size:2.5rem;
 margin-bottom:40px;
 }
 
+/* CARDS */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -126,6 +133,9 @@ backdrop-filter:blur(15px);
 padding:25px;
 border-radius:20px;
 transition:.3s;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 0.8s ease forwards;
 }
 
 .card:hover{
@@ -133,6 +143,7 @@ transform:translateY(-8px);
 border-color:#8b5cf6;
 }
 
+/* SKILLS */
 .skills{
 display:flex;
 flex-wrap:wrap;
@@ -143,34 +154,51 @@ gap:15px;
 padding:12px 20px;
 background:rgba(255,255,255,.08);
 border-radius:12px;
+transition:0.3s;
 }
 
+.skill:hover{
+transform:scale(1.1);
+background:rgba(255,255,255,.15);
+}
+
+/* FOOTER */
 footer{
 padding:40px;
 text-align:center;
 color:#94a3b8;
 }
-</style>
 
+/* ANIMATION */
+@keyframes fadeUp {
+from {
+opacity:0;
+transform:translateY(30px);
+}
+to {
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
 </head>
 
 <body>
 
 <nav>
-<div class="logo">Suuwi2kk</div>
+<div class="logo">Suuwi2k</div>
 </nav>
 
 <section class="hero">
 <div>
-<h1>Roblox Developer</h1>
+<h1>Roblox Scripter</h1>
 
 <p>
-Creating advanced Roblox systems, UI designs,
-and immersive gameplay experiences with Luau.
+Creating clean and optimized Roblox systems using Luau.
+Specializing in gameplay mechanics, UI systems and scripting.
 </p>
 
 <a href="#projects" class="btn">View Projects</a>
-
 </div>
 </section>
 
@@ -179,10 +207,11 @@ and immersive gameplay experiences with Luau.
 
 <div class="card">
 <p>
-I'm a Roblox Developer focused on scripting,
-game systems, UI/UX and optimization.
-I create engaging experiences and custom features
-for Roblox games using Roblox Studio and Luau.
+I am a Roblox scripter with almost 1 year of experience in Roblox Studio.
+I specialize in creating game systems using Luau such as combat systems,
+UI systems, DataStore saving, and gameplay mechanics.
+<br><br>
+I focus on clean, optimized and scalable scripts for Roblox games.
 </p>
 </div>
 </section>
@@ -193,12 +222,12 @@ for Roblox games using Roblox Studio and Luau.
 <div class="skills">
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
-<div class="skill">UI Design</div>
+<div class="skill">UI Systems</div>
 <div class="skill">DataStore</div>
 <div class="skill">Combat Systems</div>
-<div class="skill">Optimization</div>
 <div class="skill">Remote Events</div>
 <div class="skill">Game Design</div>
+<div class="skill">Optimization</div>
 </div>
 </section>
 
@@ -208,18 +237,31 @@ for Roblox games using Roblox Studio and Luau.
 <div class="grid">
 
 <div class="card">
-<h3>Combat System</h3>
-<p>Advanced PvP combat with combos, effects and animations.</p>
+<h3>⚔️ Combat System</h3>
+<p>
+Advanced PvP system with combos, animations and VFX.
+</p>
 </div>
 
 <div class="card">
-<h3>Simulator Framework</h3>
-<p>Pets, rebirths, upgrades, shops and progression systems.</p>
+<h3>🐾 Pet Simulator System</h3>
+<p>
+Pets, eggs, upgrades, DataStore saving and progression system.
+</p>
 </div>
 
 <div class="card">
-<h3>Custom UI</h3>
-<p>Modern Roblox interfaces focused on usability and style.</p>
+<h3>🎮 UI System</h3>
+<p>
+Modern Roblox UI with animations and shop interface.
+</p>
+</div>
+
+<div class="card">
+<h3>🧠 Admin System</h3>
+<p>
+Moderation tools like kick, ban, teleport and player management.
+</p>
 </div>
 
 </div>
@@ -230,13 +272,13 @@ for Roblox games using Roblox Studio and Luau.
 
 <div class="card">
 <p><strong>Discord:</strong> yourdiscord</p>
-<p><strong>Roblox:</strong> Suuwi2kk</p>
-<p><strong>GitHub:</strong> Suuwi2kk</p>
+<p><strong>Roblox:</strong> Suuwi2k</p>
+<p><strong>GitHub:</strong> Suuwi2k</p>
 </div>
 </section>
 
 <footer>
-© 2026 Suuwi2kk • Roblox Developer
+© 2025 Suuwi2k • Roblox Scripter
 </footer>
 
 </body>
