@@ -13,7 +13,6 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
 }
 
 body{
@@ -22,31 +21,28 @@ color:white;
 overflow-x:hidden;
 }
 
-/* BACKGROUND GLOW */
-body::before{
-content:'';
-position:fixed;
-width:500px;
-height:500px;
-background:#6d28d9;
-filter:blur(200px);
-top:-100px;
-left:-100px;
-opacity:.4;
-z-index:-1;
-}
-
+/* GLOW BACKGROUND */
+body::before,
 body::after{
 content:'';
 position:fixed;
 width:500px;
 height:500px;
-background:#06b6d4;
 filter:blur(200px);
+z-index:-1;
+opacity:.4;
+}
+
+body::before{
+background:#6d28d9;
+top:-100px;
+left:-100px;
+}
+
+body::after{
+background:#06b6d4;
 bottom:-100px;
 right:-100px;
-opacity:.4;
-z-index:-1;
 }
 
 /* NAV */
@@ -74,7 +70,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
+position:relative;
 }
 
 .hero h1{
@@ -82,15 +78,19 @@ font-size:5rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation: fadeUp 1s ease forwards;
+opacity:0;
+transform:translateY(20px);
+animation:fadeInUp 1s ease forwards;
 }
 
 .hero p{
 max-width:700px;
 margin:20px auto;
-font-size:1.1rem;
 color:#cbd5e1;
-animation: fadeUp 1.2s ease forwards;
+opacity:0;
+transform:translateY(20px);
+animation:fadeInUp 1s ease forwards;
+animation-delay:0.2s;
 }
 
 .btn{
@@ -102,11 +102,14 @@ text-decoration:none;
 color:white;
 font-weight:600;
 transition:.3s;
-animation: fadeUp 1.4s ease forwards;
+opacity:0;
+animation:fadeInUp 1s ease forwards;
+animation-delay:0.4s;
 }
 
 .btn:hover{
-transform:translateY(-4px);
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 10px 30px rgba(139,92,246,0.4);
 }
 
 /* SECTIONS */
@@ -132,14 +135,14 @@ border:1px solid rgba(255,255,255,.1);
 backdrop-filter:blur(15px);
 padding:25px;
 border-radius:20px;
-transition:.3s;
+transition:0.4s;
 opacity:0;
-transform:translateY(20px);
-animation:fadeUp 0.8s ease forwards;
+transform:translateY(30px);
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-12px) scale(1.03);
+box-shadow:0 20px 60px rgba(99,102,241,0.25);
 border-color:#8b5cf6;
 }
 
@@ -158,8 +161,9 @@ transition:0.3s;
 }
 
 .skill:hover{
-transform:scale(1.1);
-background:rgba(255,255,255,.15);
+transform:scale(1.15);
+background:rgba(255,255,255,.18);
+box-shadow:0 0 20px rgba(6,182,212,0.4);
 }
 
 /* FOOTER */
@@ -170,12 +174,8 @@ color:#94a3b8;
 }
 
 /* ANIMATION */
-@keyframes fadeUp {
-from {
-opacity:0;
-transform:translateY(30px);
-}
-to {
+@keyframes fadeInUp{
+to{
 opacity:1;
 transform:translateY(0);
 }
@@ -194,8 +194,8 @@ transform:translateY(0);
 <h1>Roblox Scripter</h1>
 
 <p>
-Creating clean and optimized Roblox systems using Luau.
-Specializing in gameplay mechanics, UI systems and scripting.
+Creating clean, optimized Roblox systems using Luau.
+Specialized in gameplay mechanics, UI systems and game scripting.
 </p>
 
 <a href="#projects" class="btn">View Projects</a>
@@ -208,10 +208,10 @@ Specializing in gameplay mechanics, UI systems and scripting.
 <div class="card">
 <p>
 I am a Roblox scripter with almost 1 year of experience in Roblox Studio.
-I specialize in creating game systems using Luau such as combat systems,
-UI systems, DataStore saving, and gameplay mechanics.
+I specialize in scripting game systems using Luau such as combat systems,
+UI systems, DataStore saving and gameplay mechanics.
 <br><br>
-I focus on clean, optimized and scalable scripts for Roblox games.
+I focus on clean, optimized and scalable code for Roblox games.
 </p>
 </div>
 </section>
@@ -223,11 +223,11 @@ I focus on clean, optimized and scalable scripts for Roblox games.
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
 <div class="skill">UI Systems</div>
-<div class="skill">DataStore</div>
 <div class="skill">Combat Systems</div>
+<div class="skill">DataStore</div>
 <div class="skill">Remote Events</div>
-<div class="skill">Game Design</div>
 <div class="skill">Optimization</div>
+<div class="skill">Game Design</div>
 </div>
 </section>
 
@@ -238,30 +238,22 @@ I focus on clean, optimized and scalable scripts for Roblox games.
 
 <div class="card">
 <h3>⚔️ Combat System</h3>
-<p>
-Advanced PvP system with combos, animations and VFX.
-</p>
+<p>Advanced PvP system with combos, animations and VFX.</p>
 </div>
 
 <div class="card">
-<h3>🐾 Pet Simulator System</h3>
-<p>
-Pets, eggs, upgrades, DataStore saving and progression system.
-</p>
+<h3>🐾 Pet Simulator</h3>
+<p>Hatching system, pets, upgrades and progression system.</p>
 </div>
 
 <div class="card">
 <h3>🎮 UI System</h3>
-<p>
-Modern Roblox UI with animations and shop interface.
-</p>
+<p>Modern Roblox UI with animations and shop systems.</p>
 </div>
 
 <div class="card">
 <h3>🧠 Admin System</h3>
-<p>
-Moderation tools like kick, ban, teleport and player management.
-</p>
+<p>Moderation tools like kick, ban, teleport and controls.</p>
 </div>
 
 </div>
@@ -271,15 +263,30 @@ Moderation tools like kick, ban, teleport and player management.
 <h2 class="title">Contact</h2>
 
 <div class="card">
-<p><strong>Discord:</strong> yourdiscord</p>
-<p><strong>Roblox:</strong> Suuwi2k</p>
-<p><strong>GitHub:</strong> Suuwi2k</p>
+<p><strong>Discord:</strong> suuwi2kd</p>
+<p><strong>Roblox:</strong> fpawlewski68</p>
+<p><strong>Email:</strong> suuwip@gmail.com</p>
 </div>
 </section>
 
 <footer>
 © 2025 Suuwi2k • Roblox Scripter
 </footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.style.opacity = 1;
+entry.target.style.transform = "translateY(0)";
+}
+});
+}, { threshold: 0.1 });
+
+cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
