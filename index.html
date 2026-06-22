@@ -21,9 +21,8 @@ color:white;
 overflow-x:hidden;
 }
 
-/* GLOW */
-body::before,
-body::after{
+/* glow */
+body::before, body::after{
 content:'';
 position:fixed;
 width:450px;
@@ -33,19 +32,10 @@ z-index:-1;
 opacity:.35;
 }
 
-body::before{
-background:#6d28d9;
-top:-120px;
-left:-120px;
-}
+body::before{background:#6d28d9;top:-120px;left:-120px;}
+body::after{background:#06b6d4;bottom:-120px;right:-120px;}
 
-body::after{
-background:#06b6d4;
-bottom:-120px;
-right:-120px;
-}
-
-/* NAV */
+/* nav */
 nav{
 position:fixed;
 width:100%;
@@ -58,12 +48,9 @@ border-bottom:1px solid rgba(255,255,255,.1);
 z-index:100;
 }
 
-.logo{
-font-size:1.2rem;
-font-weight:700;
-}
+.logo{font-weight:700;font-size:1.2rem;}
 
-/* HERO */
+/* hero */
 .hero{
 min-height:95vh;
 display:flex;
@@ -84,11 +71,9 @@ transform:translateY(20px);
 
 .hero p{
 max-width:650px;
-margin:14px auto;
+margin:15px auto;
 color:#cbd5e1;
-font-size:0.95rem;
-animation:fadeUp 1s ease forwards;
-animation-delay:0.2s;
+animation:fadeUp 1s ease forwards .2s;
 opacity:0;
 transform:translateY(20px);
 }
@@ -99,21 +84,16 @@ margin-top:10px;
 padding:12px 26px;
 border-radius:14px;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
-text-decoration:none;
 color:white;
+text-decoration:none;
 font-weight:600;
-transition:.3s;
-animation:fadeUp 1s ease forwards;
-animation-delay:0.4s;
+animation:fadeUp 1s ease forwards .4s;
 opacity:0;
+transition:.3s;
 }
+.btn:hover{transform:scale(1.05);}
 
-.btn:hover{
-transform:translateY(-4px) scale(1.03);
-box-shadow:0 10px 25px rgba(139,92,246,0.35);
-}
-
-/* SECTIONS */
+/* sections */
 section{
 padding:70px 10%;
 scroll-margin-top:80px;
@@ -124,7 +104,7 @@ font-size:2rem;
 margin-bottom:20px;
 }
 
-/* CARDS */
+/* cards */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -137,21 +117,16 @@ border:1px solid rgba(255,255,255,.1);
 backdrop-filter:blur(15px);
 padding:18px;
 border-radius:16px;
-transition:0.3s;
 cursor:pointer;
-
-/* IMPORTANT FIX */
-opacity:1;
-transform:none;
+transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 15px 40px rgba(99,102,241,0.25);
+transform:translateY(-8px);
 border-color:#8b5cf6;
 }
 
-/* SKILLS */
+/* skills */
 .skills{
 display:flex;
 flex-wrap:wrap;
@@ -162,41 +137,58 @@ gap:10px;
 padding:9px 14px;
 background:rgba(255,255,255,.08);
 border-radius:10px;
-font-size:0.85rem;
-transition:0.3s;
+font-size:.85rem;
 }
 
-.skill:hover{
-transform:scale(1.1);
-background:rgba(255,255,255,.15);
-}
-
-/* FOOTER */
+/* footer */
 footer{
 padding:30px;
 text-align:center;
 color:#94a3b8;
-font-size:0.9rem;
 }
 
-/* ANIMATION */
+/* modal */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(10px);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal-box{
+background:#111827;
+padding:20px;
+border-radius:16px;
+width:90%;
+max-width:650px;
+animation:pop .25s ease;
+}
+
+.close{
+float:right;
+cursor:pointer;
+font-size:26px;
+}
+
+iframe{
+width:100%;
+height:300px;
+border-radius:12px;
+margin-top:10px;
+}
+
+/* animations */
 @keyframes fadeUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
+to{opacity:1;transform:translateY(0);}
 }
 
-/* SCROLL ANIMATION */
-.reveal{
-opacity:0;
-transform:translateY(20px);
-transition:0.6s ease;
-}
-
-.reveal.show{
-opacity:1;
-transform:translateY(0);
+@keyframes pop{
+from{opacity:0;transform:scale(.8);}
+to{opacity:1;transform:scale(1);}
 }
 </style>
 </head>
@@ -210,60 +202,46 @@ transform:translateY(0);
 <section class="hero">
 <div>
 <h1>Roblox Scripter</h1>
-<p>Clean Luau systems, combat mechanics, UI design and gameplay development.</p>
+<p>Combat systems, UI design & gameplay systems in Luau.</p>
 <a href="#projects" class="btn">View Projects</a>
 </div>
 </section>
 
-<section class="reveal">
+<section>
 <h2 class="title">About Me</h2>
 <div class="card">
-Roblox scripter with ~1 year of experience in Roblox Studio.<br><br>
+Roblox scripter with ~1 year experience.<br><br>
 Combat systems • UI design • Gameplay systems<br><br>
-Focused on clean, optimized Luau code for scalable games.
+Clean and optimized Luau development.
 </div>
 </section>
 
-<section class="reveal">
+<section>
 <h2 class="title">Skills</h2>
-
 <div class="skills">
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
 <div class="skill">Combat</div>
 <div class="skill">UI Design</div>
 <div class="skill">Gameplay Systems</div>
-<div class="skill">DataStore</div>
 </div>
 </section>
 
-<section id="projects" class="reveal">
+<section id="projects">
 <h2 class="title">Projects</h2>
 
 <div class="grid">
 
-<div class="card">
-⚔️ Combat System
-</div>
-
-<div class="card">
-🎮 UI System
-</div>
-
-<div class="card">
-🧠 Gameplay Systems
-</div>
-
-<div class="card">
-⚙️ Framework
-</div>
+<div class="card" onclick="openProject('combat')">⚔️ Combat System</div>
+<div class="card" onclick="openProject('ui')">🎮 UI System</div>
+<div class="card" onclick="openProject('gameplay')">🧠 Gameplay Systems</div>
+<div class="card" onclick="openProject('framework')">⚙️ Framework</div>
 
 </div>
 </section>
 
-<section class="reveal">
+<section>
 <h2 class="title">Contact</h2>
-
 <div class="card">
 Discord: yourdiscord<br>
 Roblox: Suuwi2k<br>
@@ -272,22 +250,63 @@ GitHub: Suuwi2k
 </section>
 
 <footer>
-© 2025 Suuwi2k • Roblox Scripter
+© 2025 Suuwi2k
 </footer>
 
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="outside(event)">
+<div class="modal-box">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<h2 id="title"></h2>
+<p id="text"></p>
+
+<iframe id="video" src=""></iframe>
+
+</div>
+</div>
+
 <script>
-// smooth reveal scroll
-const elements=document.querySelectorAll('.reveal');
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
+const data={
+combat:{
+title:"Combat System",
+text:"PvP system with combos and hit detection.",
+video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
+},
+ui:{
+title:"UI System",
+text:"Modern Roblox UI system.",
+video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
+},
+gameplay:{
+title:"Gameplay Systems",
+text:"Core mechanics and progression.",
+video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
+},
+framework:{
+title:"Framework",
+text:"Scalable Roblox architecture.",
+video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
 }
-});
-},{threshold:0.15});
+};
 
-elements.forEach(el=>observer.observe(el));
+function openProject(id){
+const p=data[id];
+document.getElementById("title").innerText=p.title;
+document.getElementById("text").innerText=p.text;
+document.getElementById("video").src=p.video;
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+document.getElementById("video").src="";
+}
+
+function outside(e){
+if(e.target.id==="modal") closeModal();
+}
 </script>
 
 </body>
