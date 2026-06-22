@@ -19,38 +19,37 @@ body{
 background:#0b0f1a;
 color:white;
 overflow-x:hidden;
-scroll-behavior:smooth;
 }
 
-/* BACKGROUND GLOW */
+/* GLOW */
 body::before,
 body::after{
 content:'';
 position:fixed;
-width:500px;
-height:500px;
-filter:blur(200px);
+width:450px;
+height:450px;
+filter:blur(180px);
 z-index:-1;
-opacity:.4;
+opacity:.35;
 }
 
 body::before{
 background:#6d28d9;
-top:-100px;
-left:-100px;
+top:-120px;
+left:-120px;
 }
 
 body::after{
 background:#06b6d4;
-bottom:-100px;
-right:-100px;
+bottom:-120px;
+right:-120px;
 }
 
 /* NAV */
 nav{
 position:fixed;
 width:100%;
-padding:20px 10%;
+padding:16px 10%;
 display:flex;
 justify-content:space-between;
 backdrop-filter:blur(15px);
@@ -60,13 +59,13 @@ z-index:100;
 }
 
 .logo{
-font-size:1.3rem;
+font-size:1.2rem;
 font-weight:700;
 }
 
 /* HERO */
 .hero{
-min-height:100vh;
+min-height:95vh;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -74,7 +73,7 @@ text-align:center;
 }
 
 .hero h1{
-font-size:5rem;
+font-size:4.5rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -84,19 +83,21 @@ animation:fadeInUp 1s ease forwards;
 }
 
 .hero p{
-max-width:700px;
-margin:20px auto;
+max-width:650px;
+margin:14px auto;
 color:#cbd5e1;
 opacity:0;
 transform:translateY(20px);
 animation:fadeInUp 1s ease forwards;
 animation-delay:0.2s;
+font-size:0.95rem;
 }
 
 .btn{
 display:inline-block;
-padding:14px 32px;
-border-radius:15px;
+margin-top:10px;
+padding:12px 26px;
+border-radius:14px;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 text-decoration:none;
 color:white;
@@ -105,45 +106,46 @@ transition:.3s;
 opacity:0;
 animation:fadeInUp 1s ease forwards;
 animation-delay:0.4s;
+font-size:0.95rem;
 }
 
 .btn:hover{
-transform:translateY(-5px) scale(1.05);
-box-shadow:0 10px 30px rgba(139,92,246,0.4);
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 10px 25px rgba(139,92,246,0.35);
 }
 
 /* SECTIONS */
 section{
-padding:100px 10%;
-scroll-margin-top:100px;
+padding:60px 10%;
+scroll-margin-top:80px;
 }
 
 .title{
-font-size:2.5rem;
-margin-bottom:40px;
+font-size:2rem;
+margin-bottom:20px;
 }
 
 /* CARDS */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:18px;
 }
 
 .card{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.1);
 backdrop-filter:blur(15px);
-padding:25px;
-border-radius:20px;
-transition:0.4s;
+padding:18px;
+border-radius:16px;
+transition:0.3s;
 opacity:0;
-transform:translateY(30px);
+transform:translateY(20px);
 }
 
 .card:hover{
-transform:translateY(-12px) scale(1.03);
-box-shadow:0 20px 60px rgba(99,102,241,0.25);
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 15px 40px rgba(99,102,241,0.25);
 border-color:#8b5cf6;
 }
 
@@ -151,27 +153,28 @@ border-color:#8b5cf6;
 .skills{
 display:flex;
 flex-wrap:wrap;
-gap:15px;
+gap:10px;
 }
 
 .skill{
-padding:12px 20px;
+padding:9px 14px;
 background:rgba(255,255,255,.08);
-border-radius:12px;
+border-radius:10px;
+font-size:0.85rem;
 transition:0.3s;
 }
 
 .skill:hover{
-transform:scale(1.15);
+transform:scale(1.12);
 background:rgba(255,255,255,.18);
-box-shadow:0 0 20px rgba(6,182,212,0.4);
 }
 
 /* FOOTER */
 footer{
-padding:40px;
+padding:30px;
 text-align:center;
 color:#94a3b8;
+font-size:0.9rem;
 }
 
 /* ANIMATION */
@@ -195,11 +198,11 @@ transform:translateY(0);
 <h1>Roblox Scripter</h1>
 
 <p>
-Creating clean and optimized Roblox systems using Luau.
-Specialized in combat systems, UI design and gameplay mechanics.
+Clean and optimized Roblox systems using Luau.
+Combat systems, UI design and gameplay mechanics.
 </p>
 
-<a href="#projects" class="btn" onclick="smoothScroll(event, 'projects')">
+<a href="#projects" class="btn" onclick="smoothScroll(event,'projects')">
 View Projects
 </a>
 </div>
@@ -210,15 +213,11 @@ View Projects
 
 <div class="card">
 <p>
-Roblox scripter with ~1 year of experience in Roblox Studio.
-<br><br>
-• Combat systems (PvP mechanics, combos, hit detection)  
-<br>
-• UI design (modern Roblox interfaces)  
-<br>
-• Gameplay systems (core mechanics, interactions, progression)  
-<br><br>
-I focus on clean, optimized and scalable Luau code.
+Roblox scripter with ~1 year of experience in Roblox Studio.<br><br>
+• Combat systems (PvP mechanics, combos, hit detection)<br>
+• UI design (modern Roblox interfaces)<br>
+• Gameplay systems (core mechanics, progression)<br><br>
+Clean, optimized and scalable Luau development.
 </p>
 </div>
 </section>
@@ -229,7 +228,7 @@ I focus on clean, optimized and scalable Luau code.
 <div class="skills">
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
-<div class="skill">Combat Systems</div>
+<div class="skill">Combat</div>
 <div class="skill">UI Design</div>
 <div class="skill">Gameplay Systems</div>
 <div class="skill">DataStore</div>
@@ -245,12 +244,12 @@ I focus on clean, optimized and scalable Luau code.
 
 <div class="card">
 <h3>⚔️ Combat System</h3>
-<p>Advanced PvP system with combos, animations and hit detection.</p>
+<p>PvP system with combos, animations and hit detection.</p>
 </div>
 
 <div class="card">
 <h3>🎮 UI System</h3>
-<p>Modern responsive UI for Roblox games.</p>
+<p>Modern Roblox UI with animations and responsive design.</p>
 </div>
 
 <div class="card">
@@ -259,8 +258,8 @@ I focus on clean, optimized and scalable Luau code.
 </div>
 
 <div class="card">
-<h3>⚙️ Framework System</h3>
-<p>Reusable scalable game architecture systems.</p>
+<h3>⚙️ Framework</h3>
+<p>Reusable scalable system architecture for Roblox games.</p>
 </div>
 
 </div>
@@ -281,26 +280,23 @@ I focus on clean, optimized and scalable Luau code.
 </footer>
 
 <script>
-function smoothScroll(event, id){
-event.preventDefault();
-
-document.getElementById(id).scrollIntoView({
-behavior:'smooth'
-});
+function smoothScroll(e,id){
+e.preventDefault();
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
-const cards = document.querySelectorAll('.card');
+const cards=document.querySelectorAll('.card');
 
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.style.opacity = 1;
-entry.target.style.transform = "translateY(0)";
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+e.target.style.opacity=1;
+e.target.style.transform="translateY(0)";
 }
 });
 },{threshold:0.1});
 
-cards.forEach(card => observer.observe(card));
+cards.forEach(c=>obs.observe(c));
 </script>
 
 </body>
