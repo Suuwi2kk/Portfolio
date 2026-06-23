@@ -1,175 +1,130 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Suuwi2k | Roblox Scripter</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-html{ scroll-behavior:smooth; }
-body{
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+html { scroll-behavior:smooth; }
+body {
     background:#0b0f1a;
     color:white;
     overflow-x:hidden;
 }
 
 /* Background Glow */
-body::before, body::after{
-    content:'';
-    position:fixed;
-    width:500px;
-    height:500px;
-    filter:blur(180px);
-    z-index:-1;
-    opacity:.35;
+body::before, body::after {
+    content:''; position:fixed; width:500px; height:500px;
+    filter:blur(180px); z-index:-1; opacity:.35;
 }
-body::before{ background:#7c3aed; top:-150px; left:-150px; }
-body::after{ background:#06b6d4; bottom:-150px; right:-150px; }
+body::before { background:#7c3aed; top:-150px; left:-150px; }
+body::after { background:#06b6d4; bottom:-150px; right:-150px; }
 
 /* Navbar */
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:18px 10%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:rgba(255,255,255,.05);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-    z-index:100;
+nav {
+    position:fixed; top:0; width:100%; padding:18px 10%;
+    display:flex; justify-content:space-between; align-items:center;
+    background:rgba(255,255,255,.05); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08); z-index:100;
 }
-.logo{ font-size:1.2rem; font-weight:700; }
+.logo { font-size:1.2rem; font-weight:700; }
 
 /* Hero */
-.hero{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:0 20px;
+.hero {
+    height:100vh; display:flex; justify-content:center; align-items:center;
+    text-align:center; padding:0 20px;
 }
-.hero h1{
+.hero h1 {
     font-size:4.5rem;
     background:linear-gradient(90deg,#8b5cf6,#06b6d4);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
 }
-.hero p{
-    margin-top:25px;
-    color:#cbd5e1;
-    max-width:650px;
+.hero p { margin-top:25px; color:#cbd5e1; max-width:650px; }
+.btn {
+    display:inline-block; margin-top:25px; padding:14px 30px;
+    border-radius:14px; background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+    color:white; text-decoration:none; font-weight:600; transition:.3s;
 }
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:14px 30px;
-    border-radius:14px;
-    background:linear-gradient(90deg,#8b5cf6,#06b6d4);
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-.btn:hover{
-    transform:translateY(-4px) scale(1.05);
-    box-shadow:0 10px 30px rgba(139,92,246,.4);
-}
+.btn:hover { transform:translateY(-4px) scale(1.05); box-shadow:0 10px 30px rgba(139,92,246,.4); }
 
 /* Sections */
-section{ padding:80px 10%; }
-.title{ font-size:2rem; margin-bottom:30px; text-align:center; }
+section { padding:80px 10%; }
+.title { font-size:2rem; margin-bottom:30px; text-align:center; }
 
 /* Cards */
-.card{
+.card {
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.1);
     backdrop-filter:blur(12px);
-    padding:25px;
-    border-radius:16px;
-    transition:.3s;
-    cursor:pointer;
+    padding:25px; border-radius:16px;
+    transition:.3s; cursor:pointer;
 }
-.card:hover{
+.card:hover {
     transform:translateY(-8px);
     border-color:#8b5cf6;
     box-shadow:0 10px 30px rgba(139,92,246,.2);
 }
 
-/* Modal */
-.modal{
-    display:none;
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:rgba(0,0,0,0.85);
-    backdrop-filter:blur(8px);
-    z-index:1000;
-    align-items:center;
-    justify-content:center;
+/* ==================== MODAL ==================== */
+.modal {
+    display:none; position:fixed; top:0; left:0;
+    width:100%; height:100%; background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(10px); z-index:1000;
+    align-items:center; justify-content:center;
 }
-.modal-content{
-    background:rgba(15,20,35,0.95);
+.modal-content {
+    background:rgba(15,20,35,0.97);
     border:1px solid rgba(139,92,246,0.3);
     border-radius:20px;
-    width:90%;
-    max-width:900px;
-    max-height:90vh;
+    width:90%; 
+    max-width:780px;           /* <-- Mniejsze okno */
+    max-height:88vh;
     overflow-y:auto;
-    padding:30px;
+    padding:25px 30px;
     position:relative;
 }
-.close{
-    position:absolute;
-    top:20px;
-    right:25px;
-    font-size:2rem;
-    cursor:pointer;
-    color:#94a3b8;
-    transition:.2s;
+.close {
+    position:absolute; top:18px; right:28px;
+    font-size:2.4rem; cursor:pointer; color:#94a3b8;
 }
-.close:hover{ color:white; transform:scale(1.1); }
+.close:hover { color:white; transform:scale(1.15); }
 
-.modal-video{
-    width:100%;
-    aspect-ratio:16/9;
-    background:#000;
+.modal-video {
+    width:100%; background:#000; border-radius:12px;
+    margin:18px 0; overflow:hidden;
+}
+.modal-video video {
+    width:100%; display:block;
     border-radius:12px;
-    margin:20px 0;
-    overflow:hidden;
+    max-height:380px;           /* Ograniczenie wysokości video */
 }
 
-/* Skills & Grid */
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
+.reveal {
+    opacity:0; transform:translateY(40px);
+    transition:all .8s ease;
 }
-.skill{
-    padding:10px 15px;
-    background:rgba(255,255,255,.08);
-    border-radius:10px;
+.reveal.show {
+    opacity:1; transform:translateY(0);
 }
-.grid{
+
+.grid {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:20px;
+}
+.skills { display:flex; flex-wrap:wrap; gap:10px; }
+.skill {
+    padding:10px 15px;
+    background:rgba(255,255,255,.08);
+    border-radius:10px;
 }
 </style>
 </head>
 <body>
 
-<nav>
-    <div class="logo">Suuwi2k</div>
-</nav>
+<nav><div class="logo">Suuwi2k</div></nav>
 
 <section class="hero">
     <div>
@@ -206,69 +161,58 @@ section{ padding:80px 10%; }
 
 <section id="projects" class="reveal">
     <h2 class="title">Projects</h2>
-    <div class="grid" id="projectsGrid">
-        <!-- Projekty będą tutaj -->
-    </div>
+    <div class="grid" id="projectsGrid"></div>
 </section>
 
 <section class="reveal">
     <h2 class="title">Contact</h2>
-    <div class="card">
-        Discord: suuwi2k<br>
-        Roblox: fpawlewski68
-    </div>
+    <div class="card">Discord: suuwi2k<br>Roblox: fpawlewski68</div>
 </section>
 
-<footer>
-    © 2025 Suuwi2k • Roblox Scripter
-</footer>
+<footer>© 2025 Suuwi2k • Roblox Scripter</footer>
 
-<!-- ==================== MODAL ==================== -->
+<!-- MODAL -->
 <div class="modal" id="projectModal">
     <div class="modal-content">
         <span class="close" id="closeModal">×</span>
         <h2 id="modalTitle"></h2>
         <div class="modal-video">
-            <iframe id="modalVideo" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+            <video id="modalVideo" controls autoplay muted loop playsinline></video>
         </div>
         <p id="modalDesc"></p>
     </div>
 </div>
 
 <script>
-// Dane projektów
+// Project Data
 const projects = [
     {
         title: "⚔️ Combat System",
-        desc: "Zaawansowany system walki PvP z combo, hit detection, particle effects i animacjami. W pełni zoptymalizowany pod dużą ilość graczy.",
-        video: "https://www.youtube.com/embed/dQw4w9wgxcq"   // ← ZMIEŃ NA SWOJE
+        desc: "Advanced PvP combat system with combos, precise hit detection, particle effects, and smooth animations. Fully optimized for high player counts.",
+        video: "videos/combat-system.mp4"
     },
     {
         title: "🎮 UI System",
-        desc: "Nowoczesny, responsywny interfejs z płynnymi animacjami, customowymi ekranami i systemem menu.",
-        video: "https://www.youtube.com/embed/dQw4w9wgxcq"
+        desc: "Modern and responsive user interface with smooth animations, custom screens, and intuitive menu systems.",
+        video: "videos/ui-system.mp4"
     },
     {
         title: "🧠 Gameplay Mechanics",
-        desc: "Zaawansowane mechaniki rozgrywki, system progresji, questy i interakcje z otoczeniem.",
-        video: "https://www.youtube.com/embed/dQw4w9wgxcq"
+        desc: "Custom gameplay systems, progression mechanics, quests, and environmental interactions.",
+        video: "videos/gameplay-mechanics.mp4"
     },
     {
         title: "⚙️ Framework",
-        desc: "Modułowa i skalowalna architektura gry, ułatwiająca rozwój dużych projektów Roblox.",
-        video: "https://www.youtube.com/embed/dQw4w9wgxcq"
+        desc: "Modular and scalable game architecture designed to make large Roblox projects easier to develop and maintain.",
+        video: "videos/framework.mp4"
     }
 ];
 
-// Generowanie kart
 const grid = document.getElementById('projectsGrid');
 projects.forEach((project, index) => {
     const card = document.createElement('div');
     card.className = 'card';
-    card.innerHTML = `
-        <h3>${project.title}</h3>
-        <p>${project.desc.substring(0, 120)}...</p>
-    `;
+    card.innerHTML = `<h3>${project.title}</h3><p>${project.desc.substring(0, 135)}...</p>`;
     card.onclick = () => openModal(index);
     grid.appendChild(card);
 });
@@ -277,45 +221,35 @@ function openModal(index) {
     const p = projects[index];
     document.getElementById('modalTitle').textContent = p.title;
     document.getElementById('modalDesc').textContent = p.desc;
-    document.getElementById('modalVideo').src = p.video;
+    
+    const video = document.getElementById('modalVideo');
+    video.src = p.video;
+    video.play();
+    
     document.getElementById('projectModal').style.display = 'flex';
 }
 
-document.getElementById('closeModal').onclick = () => {
-    document.getElementById('projectModal').style.display = 'none';
-    document.getElementById('modalVideo').src = ''; // zatrzymuje film
-};
-
-window.onclick = (e) => {
+function closeModal() {
     const modal = document.getElementById('projectModal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        document.getElementById('modalVideo').src = '';
-    }
+    const video = document.getElementById('modalVideo');
+    modal.style.display = 'none';
+    video.pause();
+    video.src = '';
+}
+
+document.getElementById('closeModal').onclick = closeModal;
+window.onclick = (e) => { 
+    if (e.target.id === 'projectModal') closeModal(); 
 };
 
 // Reveal animation
-const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add('show');
     });
 }, { threshold: 0.15 });
 
-reveals.forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
-<style>
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:all .8s ease;
-}
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
-</style>
-
 </body>
 </html>
