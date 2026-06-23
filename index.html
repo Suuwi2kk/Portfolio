@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suuwi2k | Roblox Scripter</title>
+<title>Suuwi2k | Roblox Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
@@ -63,7 +63,6 @@ section { padding:80px 10%; }
     transition: all 0.8s ease;
 }
 
-/* Hint under Projects */
 .projects-hint {
     text-align: center;
     color: #94a3b8;
@@ -74,22 +73,26 @@ section { padding:80px 10%; }
     transition: all 0.8s ease;
 }
 
-/* Cards */
+/* Cards - Zwiększony GLOW */
 .card {
     background:rgba(255,255,255,.05);
     border:1px solid rgba(255,255,255,.1);
     backdrop-filter:blur(12px);
     padding:25px; 
     border-radius:16px;
-    transition:.5s; 
+    transition: all .4s ease;
     cursor:pointer;
     opacity:0;
     transform: translateY(50px);
 }
 .card:hover {
-    transform:translateY(-8px);
-    border-color:#8b5cf6;
-    box-shadow:0 15px 35px rgba(139,92,246,.25);
+    transform: translateY(-12px);
+    border-color: #8b5cf6;
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.4),     /* Główny fioletowy glow */
+        0 0 60px rgba(139, 92, 246, 0.35),       /* Większy rozbłysk */
+        0 0 90px rgba(6, 182, 212, 0.25);        /* Dodatkowy cyan glow */
+    border-width: 2px;
 }
 
 /* Modal */
@@ -178,7 +181,7 @@ footer {
 
 <section class="hero">
     <div>
-        <h1>Roblox Scripter</h1>
+        <h1>Roblox Developer</h1>
         <p>Creating combat systems, UI design and gameplay mechanics in Roblox Studio using Luau.</p>
         <a href="#projects" class="btn">View Projects</a>
     </div>
@@ -187,7 +190,7 @@ footer {
 <section class="reveal">
     <h2 class="title">About Me</h2>
     <div class="card">
-        Roblox Scripter with nearly 1 year of experience in Roblox Studio.<br><br>
+        Roblox Developer with nearly 1 year of experience in Roblox Studio.<br><br>
         ⚔️ Combat Systems<br>
         🎨 UI Design<br>
         🧠 Gameplay Mechanics<br>
@@ -221,7 +224,7 @@ footer {
 </section>
 
 <footer>
-    © 2025 Suuwi2k • Roblox Scripter
+    © 2025 Suuwi2k • Roblox Developer
 </footer>
 
 <!-- MODAL -->
@@ -261,7 +264,6 @@ const projects = [
     }
 ];
 
-// Generate Projects
 const grid = document.getElementById('projectsGrid');
 projects.forEach((project, index) => {
     const card = document.createElement('div');
@@ -295,7 +297,7 @@ window.onclick = (e) => {
     if (e.target.id === 'projectModal') closeModal(); 
 };
 
-// Scroll Animations (repeating)
+// Scroll Animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
