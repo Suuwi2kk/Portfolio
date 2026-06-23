@@ -12,6 +12,9 @@ body {
     background:#0b0f1a;
     color:white;
     overflow-x:hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Background Glow */
@@ -67,7 +70,7 @@ section { padding:80px 10%; }
     box-shadow:0 10px 30px rgba(139,92,246,.2);
 }
 
-/* ==================== MODAL ==================== */
+/* Modal */
 .modal {
     display:none; position:fixed; top:0; left:0;
     width:100%; height:100%; background:rgba(0,0,0,0.92);
@@ -79,7 +82,7 @@ section { padding:80px 10%; }
     border:1px solid rgba(139,92,246,0.3);
     border-radius:20px;
     width:90%; 
-    max-width:960px;           /* Większe okno */
+    max-width:960px;
     max-height:92vh;
     overflow-y:auto;
     padding:28px 35px;
@@ -98,17 +101,10 @@ section { padding:80px 10%; }
 .modal-video video {
     width:100%; display:block;
     border-radius:14px;
-    max-height:520px;           /* Większe wideo */
+    max-height:520px;
 }
 
-.reveal {
-    opacity:0; transform:translateY(40px);
-    transition:all .8s ease;
-}
-.reveal.show {
-    opacity:1; transform:translateY(0);
-}
-
+/* Grid & Skills */
 .grid {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -119,6 +115,24 @@ section { padding:80px 10%; }
     padding:10px 15px;
     background:rgba(255,255,255,.08);
     border-radius:10px;
+}
+
+/* Footer - na samym dole, wyśrodkowany */
+footer {
+    margin-top: auto;
+    padding: 40px 10% 30px;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.reveal {
+    opacity:0; transform:translateY(40px);
+    transition:all .8s ease;
+}
+.reveal.show {
+    opacity:1; transform:translateY(0);
 }
 </style>
 </head>
@@ -169,7 +183,9 @@ section { padding:80px 10%; }
     <div class="card">Discord: suuwi2k<br>Roblox: fpawlewski68</div>
 </section>
 
-<footer>© 2025 Suuwi2k • Roblox Scripter</footer>
+<footer>
+    © 2025 Suuwi2k • Roblox Scripter
+</footer>
 
 <!-- MODAL -->
 <div class="modal" id="projectModal">
