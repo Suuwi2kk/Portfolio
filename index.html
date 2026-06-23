@@ -56,8 +56,19 @@ nav {
 section { padding:80px 10%; }
 .title { 
     font-size:2.2rem; 
-    margin-bottom:40px; 
+    margin-bottom:15px; 
     text-align:center; 
+    opacity:0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+/* Hint under Projects */
+.projects-hint {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 1.05rem;
+    margin-bottom: 35px;
     opacity:0;
     transform: translateY(30px);
     transition: all 0.8s ease;
@@ -152,10 +163,10 @@ footer {
 }
 
 /* Animation */
-.reveal, .title, .card, .skill {
+.reveal, .title, .card, .skill, .projects-hint {
     transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
-.reveal.show, .title.show, .card.show, .skill.show {
+.reveal.show, .title.show, .card.show, .skill.show, .projects-hint.show {
     opacity:1;
     transform: translateY(0);
 }
@@ -200,6 +211,7 @@ footer {
 
 <section id="projects" class="reveal">
     <h2 class="title">Projects</h2>
+    <p class="projects-hint">Click on any project to see details and video demo</p>
     <div class="grid" id="projectsGrid"></div>
 </section>
 
@@ -283,22 +295,21 @@ window.onclick = (e) => {
     if (e.target.id === 'projectModal') closeModal(); 
 };
 
-// === REPEATING SCROLL ANIMATIONS ===
+// Scroll Animations (repeating)
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show');
         } else {
-            entry.target.classList.remove('show');   // <-- najważniejsze
+            entry.target.classList.remove('show');
         }
     });
 }, { 
     threshold: 0.2,
-    rootMargin: "-50px 0px -50px 0px"
+    rootMargin: "-50px 0px -80px 0px"
 });
 
-// Observe elements
-document.querySelectorAll('.reveal, .title, .card, .skill').forEach(el => {
+document.querySelectorAll('.reveal, .title, .card, .skill, .projects-hint').forEach(el => {
     observer.observe(el);
 });
 </script>
