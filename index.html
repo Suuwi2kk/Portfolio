@@ -70,15 +70,15 @@ section { padding:80px 10%; }
     backdrop-filter:blur(12px);
     padding:25px; 
     border-radius:16px;
-    transition:.4s; 
+    transition:.5s; 
     cursor:pointer;
     opacity:0;
-    transform: translateY(40px);
+    transform: translateY(50px);
 }
 .card:hover {
     transform:translateY(-8px);
     border-color:#8b5cf6;
-    box-shadow:0 10px 30px rgba(139,92,246,.2);
+    box-shadow:0 15px 35px rgba(139,92,246,.25);
 }
 
 /* Modal */
@@ -137,8 +137,8 @@ section { padding:80px 10%; }
     background:rgba(255,255,255,.08);
     border-radius:10px;
     opacity:0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+    transform: translateY(40px);
+    transition: all 0.7s ease;
 }
 
 /* Footer */
@@ -151,7 +151,7 @@ footer {
     border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-/* Active animation classes */
+/* Animation */
 .reveal, .title, .card, .skill {
     transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
@@ -226,7 +226,7 @@ footer {
 
 <script>
 // Project Data
-const projects = [ /* ... bez zmian ... */ 
+const projects = [
     {
         title: "⚔️ Combat System",
         desc: "Advanced PvP combat system with combos, precise hit detection, particle effects, and smooth animations. Fully optimized for high player counts.",
@@ -259,7 +259,6 @@ projects.forEach((project, index) => {
     grid.appendChild(card);
 });
 
-// Open Modal
 function openModal(index) {
     const p = projects[index];
     document.getElementById('modalTitle').textContent = p.title;
@@ -284,22 +283,21 @@ window.onclick = (e) => {
     if (e.target.id === 'projectModal') closeModal(); 
 };
 
-// Scroll Animations
+// === REPEATING SCROLL ANIMATIONS ===
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // Staggered delay
-            setTimeout(() => {
-                entry.target.classList.add('show');
-            }, i * 80); // lekkie opóźnienie między elementami
+            entry.target.classList.add('show');
+        } else {
+            entry.target.classList.remove('show');   // <-- najważniejsze
         }
     });
 }, { 
-    threshold: 0.15,
-    rootMargin: "0px 0px -50px 0px"
+    threshold: 0.2,
+    rootMargin: "-50px 0px -50px 0px"
 });
 
-// Observe all animated elements
+// Observe elements
 document.querySelectorAll('.reveal, .title, .card, .skill').forEach(el => {
     observer.observe(el);
 });
