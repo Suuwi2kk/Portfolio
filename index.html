@@ -15,97 +15,127 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 background:#0b0f1a;
 color:white;
 overflow-x:hidden;
 }
 
-/* glow */
-body::before, body::after{
+/* Background Glow */
+body::before,
+body::after{
 content:'';
 position:fixed;
-width:450px;
-height:450px;
+width:500px;
+height:500px;
 filter:blur(180px);
 z-index:-1;
 opacity:.35;
 }
 
-body::before{background:#6d28d9;top:-120px;left:-120px;}
-body::after{background:#06b6d4;bottom:-120px;right:-120px;}
+body::before{
+background:#7c3aed;
+top:-150px;
+left:-150px;
+}
 
-/* nav */
+body::after{
+background:#06b6d4;
+bottom:-150px;
+right:-150px;
+}
+
+/* Navbar */
 nav{
 position:fixed;
+top:0;
 width:100%;
-padding:16px 10%;
+padding:18px 10%;
 display:flex;
 justify-content:space-between;
-backdrop-filter:blur(15px);
+align-items:center;
 background:rgba(255,255,255,.05);
-border-bottom:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.08);
 z-index:100;
 }
 
 .logo{
+font-size:1.2rem;
 font-weight:700;
 }
 
-/* hero */
+/* Hero */
 .hero{
-min-height:95vh;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
+padding:0 20px;
 }
 
 .hero h1{
-font-size:4rem;
+font-size:4.5rem;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:fadeUp 1s ease forwards;
-opacity:0;
-transform:translateY(20px);
 }
 
 .hero p{
-margin-top:10px;
+margin-top:15px;
 color:#cbd5e1;
-animation:fadeUp 1s ease forwards .2s;
-opacity:0;
-transform:translateY(20px);
+max-width:650px;
 }
 
-/* sections */
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:14px 30px;
+border-radius:14px;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 10px 30px rgba(139,92,246,.4);
+}
+
+/* Sections */
 section{
-padding:70px 10%;
+padding:80px 10%;
 }
 
-/* cards */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:18px;
+.title{
+font-size:2rem;
+margin-bottom:20px;
 }
 
+/* Cards */
 .card{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.1);
-padding:18px;
+backdrop-filter:blur(12px);
+padding:20px;
 border-radius:16px;
-cursor:pointer;
 transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-8px);
 border-color:#8b5cf6;
+box-shadow:0 10px 30px rgba(139,92,246,.2);
 }
 
-/* skills */
+/* Skills */
 .skills{
 display:flex;
 flex-wrap:wrap;
@@ -113,58 +143,38 @@ gap:10px;
 }
 
 .skill{
-padding:8px 12px;
+padding:10px 15px;
 background:rgba(255,255,255,.08);
 border-radius:10px;
-font-size:.85rem;
 }
 
-/* modal */
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.7);
-backdrop-filter:blur(10px);
-justify-content:center;
-align-items:center;
-z-index:999;
+/* Projects */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.modal-box{
-background:#111827;
-padding:20px;
-border-radius:16px;
-width:90%;
-max-width:650px;
-animation:pop .25s ease;
+/* Reveal Animation */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
 }
 
-.close{
-float:right;
-font-size:26px;
-cursor:pointer;
+.reveal.show{
+opacity:1;
+transform:translateY(0);
 }
 
-iframe{
-width:100%;
-height:300px;
-margin-top:10px;
-border-radius:12px;
-}
-
-/* animations */
-@keyframes fadeUp{
-to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes pop{
-from{opacity:0;transform:scale(.8);}
-to{opacity:1;transform:scale(1);}
+/* Footer */
+footer{
+padding:30px;
+text-align:center;
+color:#94a3b8;
 }
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -174,110 +184,112 @@ to{opacity:1;transform:scale(1);}
 <section class="hero">
 <div>
 <h1>Roblox Scripter</h1>
-<p>Combat systems, UI design & gameplay systems in Luau.</p>
+<p>
+Creating combat systems, UI design and gameplay mechanics in Roblox Studio using Luau.
+</p>
+
+<a href="#projects" class="btn">View Projects</a>
 </div>
 </section>
 
-<section>
-<h2>About Me</h2>
+<section class="reveal">
+<h2 class="title">About Me</h2>
+
 <div class="card">
-Roblox scripter with ~1 year experience in Roblox Studio.
+Roblox Scripter with nearly 1 year of experience in Roblox Studio.
+
+<br><br>
+
+⚔️ Combat Systems<br>
+🎨 UI Design<br>
+🧠 Gameplay Mechanics<br>
+⚡ Optimization & Clean Code
+
+<br><br>
+
+Focused on creating scalable and polished Roblox experiences.
 </div>
 </section>
 
-<section>
-<h2>Skills</h2>
+<section class="reveal">
+<h2 class="title">Skills</h2>
+
 <div class="skills">
 <div class="skill">Roblox Studio</div>
 <div class="skill">Luau</div>
-<div class="skill">Combat</div>
-<div class="skill">UI</div>
+<div class="skill">Combat Systems</div>
+<div class="skill">UI Design</div>
+<div class="skill">Gameplay Systems</div>
+<div class="skill">RemoteEvents</div>
+<div class="skill">DataStore</div>
+<div class="skill">Optimization</div>
 </div>
 </section>
 
-<section>
-<h2>Projects</h2>
+<section id="projects" class="reveal">
+<h2 class="title">Projects</h2>
 
 <div class="grid">
 
-<div class="card" onclick="openProject('combat')">⚔️ Combat System</div>
-<div class="card" onclick="openProject('ui')">🎮 UI System</div>
-<div class="card" onclick="openProject('gameplay')">🧠 Gameplay Systems</div>
-<div class="card" onclick="openProject('framework')">⚙️ Framework</div>
+<div class="card">
+<h3>⚔️ Combat System</h3>
+<p>
+Advanced PvP combat with combos, hit detection and effects.
+</p>
+</div>
+
+<div class="card">
+<h3>🎮 UI System</h3>
+<p>
+Modern Roblox interface with clean layouts and animations.
+</p>
+</div>
+
+<div class="card">
+<h3>🧠 Gameplay Mechanics</h3>
+<p>
+Custom gameplay systems and progression mechanics.
+</p>
+</div>
+
+<div class="card">
+<h3>⚙️ Framework</h3>
+<p>
+Organized and scalable game architecture.
+</p>
+</div>
 
 </div>
 </section>
 
-<section>
-<h2>Contact</h2>
+<section class="reveal">
+<h2 class="title">Contact</h2>
+
 <div class="card">
 Discord: yourdiscord<br>
+Roblox: Suuwi2k<br>
 GitHub: Suuwi2k
 </div>
 </section>
 
-<footer style="text-align:center;padding:30px;color:#94a3b8;">
-© 2025 Suuwi2k
+<footer>
+© 2025 Suuwi2k • Roblox Scripter
 </footer>
 
-<!-- MODAL -->
-<div id="modal" class="modal" onclick="outside(event)">
-<div class="modal-box">
-
-<span class="close" onclick="closeModal()">×</span>
-
-<h2 id="title"></h2>
-<p id="text"></p>
-
-<iframe id="video" src=""></iframe>
-
-</div>
-</div>
-
 <script>
-const data = {
-combat:{
-title:"Combat System",
-text:"PvP system with combos and hit detection.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
-},
-ui:{
-title:"UI System",
-text:"Modern Roblox UI system.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
-},
-gameplay:{
-title:"Gameplay Systems",
-text:"Core mechanics and progression.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
-},
-framework:{
-title:"Framework",
-text:"Scalable Roblox architecture.",
-video:"https://www.youtube.com/embed/dQw4w9WgXcQ"
-}
-};
+const reveals = document.querySelectorAll('.reveal');
 
-function openProject(id){
-const p = data[id];
-
-document.getElementById("title").innerText = p.title;
-document.getElementById("text").innerText = p.text;
-document.getElementById("video").src = p.video;
-
-document.getElementById("modal").style.display = "flex";
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('show');
 }
+});
+},{
+threshold:0.15
+});
 
-function closeModal(){
-document.getElementById("modal").style.display = "none";
-document.getElementById("video").src = "";
-}
-
-function outside(e){
-if(e.target.id === "modal"){
-closeModal();
-}
-}
+reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
